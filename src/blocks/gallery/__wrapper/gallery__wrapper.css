@@ -1,0 +1,11 @@
+.gallery__wrapper {
+    list-style: none;
+    margin: 0;
+    display: grid;
+    row-gap: 20px;
+    column-gap: 17px;
+    width: 100%;
+    padding: 0;
+
+    grid-template-columns: repeat(auto-fit, minmax(282px ,1fr));
+}
