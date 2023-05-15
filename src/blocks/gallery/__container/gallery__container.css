@@ -1,5 +1,7 @@
 .gallery__container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    padding: 25px 0 31px 0;
 }

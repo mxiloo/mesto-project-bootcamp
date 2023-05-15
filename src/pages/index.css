@@ -19,6 +19,15 @@
 @import url(../blocks/profile/__name-container/profile__name-container.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
+@import url(../blocks/modal-profile/modal-profile.css);
+@import url(../blocks/modal-profile/__container/modal__container.css);
+@import url(../blocks/modal-profile/__title/modal__title.css);
+@import url(../blocks/modal-profile/__name/modal__name.css);
+@import url(../blocks/modal-profile/__description/modal__description.css);
+@import url(../blocks/modal-profile/__save-btn/modal__save-btn.css);
+@import url(../blocks/modal-profile/__save-text/modal__save-text.css);
+@import url(../blocks/modal-profile/__close/modal__close.css);
+
 @import url(../blocks/gallery/gallery.css);
 @import url(../blocks/gallery/__title/gallery__title.css);
 @import url(../blocks/gallery/__item/gallery__item.css);
@@ -26,5 +35,11 @@
 @import url(../blocks/gallery/__image/gallery__image.css);
 @import url(../blocks/gallery/__like-button/gallery__like-button.css);
 @import url(../blocks/gallery/__container/gallery__container.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
+
+
+/** { outline: 1px solid yellow}*/
 
 

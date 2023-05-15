@@ -6,6 +6,14 @@
     column-gap: 17px;
     width: 100%;
     padding: 0;
-
     grid-template-columns: repeat(auto-fit, minmax(282px ,1fr));
+}
+
+@media screen and (max-width: 320px) {
+    .gallery__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }

@@ -5,3 +5,12 @@
     padding: 22px 0 0 30px;
     flex-grow: 1;
 }
+
+@media screen and (max-width: 420px) {
+    .profile__info {
+        row-gap: 14px;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+    }
+}

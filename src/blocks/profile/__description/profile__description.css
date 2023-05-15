@@ -6,3 +6,11 @@
     margin: 0;
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 420px) {
+    .profile__description {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+}

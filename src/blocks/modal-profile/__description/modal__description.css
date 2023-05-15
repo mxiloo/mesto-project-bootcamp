@@ -1,0 +1,21 @@
+.modal__description {
+    margin: 30px 36px 0 36px;
+    padding: 0;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    resize: none;
+    color: #000000;
+}
+
+@media screen and (max-width: 420px) {
+    .modal__description {
+        margin-left: 22px;
+        margin-right: 22px;
+    }
+
+}

@@ -1,0 +1,32 @@
+.gallery__like-button {
+    background-image: url("../../../images/like.svg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    width: 22px;
+    height: 19px;
+    margin: auto 20px auto 0;
+    padding: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.gallery__like-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.gallery__like-button.active {
+    background-image: url("../../../images/like-active.svg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    /*transition: visibility 0.4s, opacity 0.4s;*/
+}
+
+/*gallery__like-button.active:hover {
+    visibility: visible;
+    opacity: 0.6;
+}*/
+
+
