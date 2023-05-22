@@ -1,0 +1,7 @@
+.gallery__image-button {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+}

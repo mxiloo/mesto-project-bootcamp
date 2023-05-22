@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 
-.gallery__like-button.active {
+.gallery__like-button.gallery__like-button_active {
     background-image: url("../../../images/like-active.svg");
     background-repeat: no-repeat;
     background-color: transparent;

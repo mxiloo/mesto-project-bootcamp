@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,6 @@
 <body class="root">
     <header class="header">
         <div class="header__logo"></div>
-        <div class="header__line"></div>
     </header>
     <main class="main main__size">
 
@@ -18,19 +17,17 @@
                 <div class="profile__info">
                     <div class="profile__name-container">
                         <h1 id="name" class="profile__name">Жак-Ив Кусто</h1>
-                        <button id="edit-btn" class="profile__edit-button" title="Редактировать профиль"></button>
+                        <button id="edit-btn" type="button" class="profile__edit-button" title="Редактировать профиль"></button>
                     </div>
+
                     <h2 id="description" class="profile__description">Исследователь океана</h2>
                 </div>
             <button id="add-btn" class="profile__add-button"></button>
         </section>
 
         <section id="modal-profile" class="modal-profile">
-
             <div class="modal__container">
-                <button id="modal-close-btn" class="modal__close">
-                    <!--<img alt="Закрыть модальное окно" src="src/images/Close-Icon.png">-->
-                </button>
+                <button id="modal-close-btn" class="modal__close"></button>
                 <h2 class="modal__title">Редактировать профиль</h2>
                 <textarea id="textarea-name" placeholder="Имя профиля" class="modal__name">Жак-Ив Кусто</textarea>
                 <textarea id="textarea-description" placeholder="Описание" class="modal__description">Исследователь океана</textarea>
@@ -40,58 +37,42 @@
             </div>
         </section>
 
+        <section id="modal-post" class="modal-post">
+            <div class="modal__container">
+                <button id="modal-close-btn-post" class="modal__close"></button>
+                <h2 class="modal__title">Новое место</h2>
+                <textarea id="textarea-name-post" placeholder="Название" class="modal__name"></textarea>
+                <textarea id="textarea-src-post" placeholder="Ссылка на картинку" class="modal__description"></textarea>
+                <button id="modal-save-btn-post" type="submit" class="modal__save-btn">
+                    <span class="modal__save-text">Создать</span>
+                </button>
+            </div>
+        </section>
         <section class="gallery">
-            <ul id ='gallery-wrapper' class="gallery__wrapper">
-
-                <li class="gallery__item">
-                    <img alt="Кирпичный замок" class="gallery__image" src="src/images/karachaevsk1.png">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title">Карачаевск</h2>
-                        <button class="gallery__like-button"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__item">
-                    <img alt="Холмы и закат" class="gallery__image" src="src/images/Elbrus.jpg">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title">Гора Эльбрус</h2>
-                        <button id="like-btn" class="gallery__like-button"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__item">
-                    <img alt="Высокие горы и лес" class="gallery__image" src="src/images/Dombai.png">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title">Домбай</h2>
-                        <button class="gallery__like-button"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__item">
-                    <img alt="Холмы и закат" class="gallery__image" src="src/images/Elbrus.jpg">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title">Гора Эльбрус</h2>
-                        <button class="gallery__like-button"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__item">
-                    <img alt="Высокие горы и лес" class="gallery__image" src="src/images/Dombai.png">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title">Домбай</h2>
-                        <button class="gallery__like-button"></button>
-                    </div>
-                </li>
-
-                <li class="gallery__item">
-                    <img alt="Кирпичный замок" class="gallery__image" src="src/images/karachaevsk1.png">
-                    <div class="gallery__container">
-                        <h2 class="gallery__title">Карачаевск</h2>
-                        <button class="gallery__like-button"></button>
-                    </div>
-                </li>
+            <ul class="gallery__wrapper">
+                <template id="card-template">
+                    <li class="gallery__item">
+                        <button type="reset" id="gallery__delete-btn" class="gallery__delete-button"></button>
+                        <button id="gallery__image-btn" type="button" class="gallery__image-button">
+                            <img alt="" class="gallery__image" src="#">
+                        </button>
+                        <div class="gallery__container">
+                            <h2 class="gallery__title"></h2>
+                            <button type="submit" id="like-btn" class="gallery__like-button"></button>
+                        </div>
+                    </li>
+                </template>
             </ul>
         </section>
+
+        <section id="modal-image" class = "modal-image">
+            <div class = "modal__box">
+                <button type="button" id="modal-close-btn-image" class="modal__close"></button>
+                <img alt="" class="modal__image" src="#">
+                <span class="modal__text"></span>
+            </div>
+        </section>
+
         <footer class="footer">
             <p class="footer__text">&copy; 2020 Mesto Russia</p>
         </footer>

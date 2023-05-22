@@ -1,4 +1,4 @@
-.modal-profile {
+.modal-post {
     position: fixed;
     left: 0;
     top: 0;
@@ -13,7 +13,7 @@
     transition: opacity 0.4s, visibility 0.4s;
 }
 
-.modal-profile.modal-profile_active {
+.modal-post.modal-post_active {
     visibility: visible;
     opacity: 1;
 }
