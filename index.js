@@ -57,7 +57,10 @@ addPost.onclick = () => {
 
     addNewCard(createText,createSrc)
 
-    document.getElementById('modal-save-btn-post').classList.remove('popup__open')
+    document.getElementById('modal-post').classList.remove('popup__open')
+
+    document.getElementById('textarea-name-post').value = '';
+    document.getElementById('textarea-src-post').value = '';
 
 }
 
@@ -117,7 +120,11 @@ document.querySelector('.modal__save-btn').addEventListener("click", function (e
     const description = document.getElementById('description');
     description.textContent = document.getElementById('textarea-description').value;
 
-    document.getElementById('modal-profile').classList.remove('popup__open')
+    document.getElementById('modal-profile').classList.remove('popup__open');
+
+
+    document.getElementById('textarea-name').value = "";
+    document.getElementById('textarea-description').value = ""
 })
 
 // Открытие Попап добавления поста
@@ -134,8 +141,6 @@ document.getElementById('modal-close-btn-post').addEventListener('click', functi
 document.getElementById('modal-close-btn-image').addEventListener('click', function () {
     document.getElementById('modal-image').classList.remove('popup__open')
 });
-
-//Удаление карточки
 
 
 
