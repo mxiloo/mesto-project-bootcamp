@@ -17,7 +17,7 @@
                 <div class="profile__info">
                     <div class="profile__name-container">
                         <h1 id="name" class="profile__name">Жак-Ив Кусто</h1>
-                        <button id="edit-btn" type="button" class="profile__edit-button" title="Редактировать профиль"></button>
+                        <button id="edit-btn" type="button"  class="profile__edit-button" title="Редактировать профиль"></button>
                     </div>
 
                     <h2 id="description" class="profile__description">Исследователь океана</h2>
@@ -25,24 +25,24 @@
             <button id="add-btn" class="profile__add-button"></button>
         </section>
 
-        <section id="modal-profile" class="modal-profile">
+        <form id="modal-profile" class="popup popup__profile">
             <div class="modal__container">
                 <button id="modal-close-btn" class="modal__close"></button>
                 <h2 class="modal__title">Редактировать профиль</h2>
-                <textarea id="textarea-name" placeholder="Имя профиля" class="modal__name">Жак-Ив Кусто</textarea>
-                <textarea id="textarea-description" placeholder="Описание" class="modal__description">Исследователь океана</textarea>
+                <input id="textarea-name" placeholder="Имя профиля" class="modal__name">
+                <input id="textarea-description" placeholder="Описание" class="modal__description" >
                 <button id="modal-save-btn" type="submit" class="modal__save-btn">
                     <span class="modal__save-text">Сохранить</span>
                 </button>
             </div>
-        </section>
+        </form>
 
-        <section id="modal-post" class="modal-post">
+        <section id="modal-post" class="popup popup__post">
             <div class="modal__container">
                 <button id="modal-close-btn-post" class="modal__close"></button>
                 <h2 class="modal__title">Новое место</h2>
-                <textarea id="textarea-name-post" placeholder="Название" class="modal__name"></textarea>
-                <textarea id="textarea-src-post" placeholder="Ссылка на картинку" class="modal__description"></textarea>
+                <input id="textarea-name-post" placeholder="Название" class="modal__name" >
+                <input id="textarea-src-post" placeholder="Ссылка на картинку" class="modal__description" >
                 <button id="modal-save-btn-post" type="submit" class="modal__save-btn">
                     <span class="modal__save-text">Создать</span>
                 </button>
@@ -65,7 +65,7 @@
             </ul>
         </section>
 
-        <section id="modal-image" class = "modal-image">
+        <section id="modal-image" class = "popup popup__image">
             <div class = "modal__box">
                 <button type="button" id="modal-close-btn-image" class="modal__close"></button>
                 <img alt="" class="modal__image" src="#">

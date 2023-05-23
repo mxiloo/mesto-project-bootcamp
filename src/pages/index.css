@@ -18,18 +18,20 @@
 @import url(../blocks/profile/__name-container/profile__name-container.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
-@import url(../blocks/modal-profile/modal-profile.css);
-@import url(../blocks/modal-profile/__container/modal__container.css);
-@import url(../blocks/modal-profile/__title/modal__title.css);
-@import url(../blocks/modal-profile/__name/modal__name.css);
-@import url(../blocks/modal-profile/__description/modal__description.css);
-@import url(../blocks/modal-profile/__save-btn/modal__save-btn.css);
-@import url(../blocks/modal-profile/__save-text/modal__save-text.css);
-@import url(../blocks/modal-profile/__close/modal__close.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__profile/popup__profile.css);
+@import url(../blocks/popup/__profile/__container/modal__container.css);
+@import url(../blocks/popup/__profile/__title/modal__title.css);
+@import url(../blocks/popup/__profile/__name/modal__name.css);
+@import url(../blocks/popup/__profile/__description/modal__description.css);
+@import url(../blocks/popup/__profile/__save-btn/modal__save-btn.css);
+@import url(../blocks/popup/__profile/__save-text/modal__save-text.css);
+@import url(../blocks/popup/__profile/__close/modal__close.css);
+@import url(../blocks/popup/__open/popup__open.css);
 
-@import url(../blocks/modal-post/modal-post.css);
-@import url(../blocks/modal-post/__description-post/modal__name-post.css);
-@import url(../blocks/modal-post/__name-post/modal__description-post.css);
+@import url(../blocks/popup/__post/popup__post.css);
+@import url(../blocks/popup/__post/__description-post/modal__name-post.css);
+@import url(../blocks/popup/__post/__name-post/modal__description-post.css);
 
 @import url(../blocks/gallery/gallery.css);
 @import url(../blocks/gallery/__title/gallery__title.css);
@@ -41,10 +43,10 @@
 @import url(../blocks/gallery/__image-button/gallery__image-button.css);
 @import url(../blocks/gallery/__delete-button/gallery__delete-button.css);
 
-@import url(../blocks/modal-image/modal-image.css);
-@import url(../blocks/modal-image/__text/modal__text.css);
-@import url(../blocks/modal-image/__image/modal__image.css);
-@import url(../blocks/modal-image/__box/modal__box.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__image/__text/modal__text.css);
+@import url(../blocks/popup/__image/__image/modal__image.css);
+@import url(../blocks/popup/__image/__box/modal__box.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);

@@ -1,5 +1,5 @@
-.modal-post {
-    position: fixed;
+.popup__post {
+    /*position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -10,10 +10,6 @@
     align-items: center;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.4s, visibility 0.4s;
+    transition: opacity 0.4s, visibility 0.4s;*/
 }
 
-.modal-post.modal-post_active {
-    visibility: visible;
-    opacity: 1;
-}

@@ -1,149 +1,143 @@
-
-// gallery section cards
-const galleryTemplate = document.querySelector('#card-template').content;
-const galleryList = document.querySelector('.gallery__wrapper');
-
-// дубликат узла
-let cardElement  = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
-
-cardElement.querySelector('.gallery__image').src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
-cardElement.querySelector('.gallery__image').alt = 'Архыз';
-cardElement.querySelector('.gallery__title').textContent = 'Архыз';
-
-galleryList.append(cardElement);
+function addNewCard (name, link) {
+    const galleryTemplate = document.querySelector('#card-template').content;
+    const galleryList = document.querySelector('.gallery__wrapper');
 
 // дубликат узла
-cardElement = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
+    let cardElement  = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
 
-cardElement.querySelector('.gallery__image').src = './src/images/Elbrus.jpg';
-cardElement.querySelector('.gallery__image').alt = 'Гора Эльбрус';
-cardElement.querySelector('.gallery__title').textContent = 'Гора Эльбрус';
+    cardElement.querySelector('.gallery__delete-button').addEventListener('click', deleteCard)
+    cardElement.querySelector('.gallery__image-button').addEventListener('click', openImage)
+    cardElement.querySelector('.gallery__like-button').addEventListener('click', like)
+    cardElement.querySelector('.gallery__image').src = link;
+    cardElement.querySelector('.gallery__image').alt = name;
+    cardElement.querySelector('.gallery__title').textContent = name;
 
-galleryList.append(cardElement);
+    galleryList.prepend(cardElement);
 
-// дубликат узла
-cardElement = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
-
-cardElement.querySelector('.gallery__image').src = './src/images/Dombai.png';
-cardElement.querySelector('.gallery__image').alt = 'Домбай';
-cardElement.querySelector('.gallery__title').textContent = 'Домбай';
-
-galleryList.append(cardElement);
-
-// дубликат узла
-cardElement = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
-
-cardElement.querySelector('.gallery__image').src = './src/images/Elbrus.jpg';
-cardElement.querySelector('.gallery__image').alt = "Гора Эльбрус";
-cardElement.querySelector('.gallery__title').textContent = 'Гора Эльбрус';
-
-galleryList.append(cardElement);
-
-// дубликат узла
-cardElement = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
-
-cardElement.querySelector('.gallery__image').src = './src/images/Dombai.png';
-cardElement.querySelector('.gallery__image').alt = 'Домбай';
-cardElement.querySelector('.gallery__title').textContent = 'Домбай';
-
-galleryList.append(cardElement);
-
-// дубликат узла
-cardElement = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
-
-cardElement.querySelector('.gallery__image').src = './src/images/karachaevsk1.png';
-cardElement.querySelector('.gallery__image').alt = 'Карачаевск';
-cardElement.querySelector('.gallery__title').textContent = 'Карачаевск';
-
-galleryList.append(cardElement);
-
-
-// Открытие Попап изменения профиля
-document.getElementById('edit-btn').addEventListener('click', function () {
-    document.getElementById('modal-profile').classList.add('modal-profile_active')
-})
-
-// Закрытие Попап изменения профиля
-document.getElementById('modal-close-btn').addEventListener('click', function () {
-    document.getElementById('modal-profile').classList.remove('modal-profile_active')
-})
-
-// Кнопка сохранения информации профиля
-document.getElementById('modal-save-btn').addEventListener('click', function (){
-    let name = document.getElementById('name');
-    name.textContent = document.getElementById('textarea-name').value;
-
-
-    let description = document.getElementById('description');
-    description.textContent = document.getElementById('textarea-description').value;
-
-    document.getElementById('modal-profile').classList.remove('modal-profile_active')
-})
-
-// Открытие Попап добавления поста
-document.getElementById('add-btn').addEventListener('click', function (){
-    document.getElementById('modal-post').classList.add('modal-post_active')
-})
-
-// Закрытие Попап добавления поста
-document.getElementById('modal-close-btn-post').addEventListener('click', function (){
-    document.getElementById('modal-post').classList.remove('modal-post_active')
-})
-
-function like () {
-    if (this.classList.contains('gallery__like-button_active')) {
-        this.classList.remove('gallery__like-button_active')
-    } else {
-        this.classList.add('gallery__like-button_active')
-    }
 }
 
-// Кнопка лайка
-document.querySelectorAll('.gallery__like-button').forEach(button => button.addEventListener('click', like
-))
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
 
+for (let i = 0; i < initialCards.length; i++) {
+    addNewCard(initialCards[i].name, initialCards[i].link)
+}
 
 // Добавление поста
 const addPost = document.getElementById('modal-save-btn-post')
 addPost.onclick = () => {
-    const createPost = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
+    /*const createPost = galleryTemplate.querySelector('.gallery__item').cloneNode(true);*/
 
     let createText = document.getElementById('textarea-name-post').value;
     let createSrc = document.getElementById('textarea-src-post').value;
 
-    createPost.querySelector('.gallery__title').textContent = createText;
-    createPost.querySelector('.gallery__image').src = createSrc;
-    createPost.querySelector('.gallery__image').alt = createText;
+    addNewCard(createText,createSrc)
 
+    document.getElementById('modal-save-btn-post').classList.remove('popup__open')
 
-    document.getElementById('modal-post').classList.remove('modal-post_active')
-
-    galleryList.prepend(createPost);
 }
 
+// Удаление карточки
+function deleteCard (e) {
+
+    const deleteElement = e.target.parentElement
+
+    deleteElement.remove()
+}
 
 // Открытие картинки поста
-document.querySelectorAll('.gallery__image-button').forEach(button => button.addEventListener('click', function (e) {
-    document.getElementById('modal-image').classList.add('modal-image_active')
+function openImage (e) {
+    document.getElementById('modal-image').classList.add('popup__open')
 
-    let image = e.target.src;
-    let text = e.target.alt;
+    const image = e.target.src;
+    const text = e.target.alt;
 
     document.querySelector('.modal__image').src = image;
     document.querySelector('.modal__text').textContent = text;
-}))
+    document.querySelector('.modal__text').alt = text;
+}
+
+// Кнопка лайка
+function like () {
+    this.classList.toggle('gallery__like-button_active')
+}
+
+// Открытие Попап изменения профиля
+document.getElementById('edit-btn').addEventListener('click', function () {
+    document.getElementById('modal-profile').classList.add('popup__open')
+})
+
+// ОТКРЫТИЕ МОДАЛЬНОГО ОКНА НОВОЕ
+/*document.querySelectorAll('.popup').forEach(button => button.addEventListener('click', function () {
+    document.getElementById('edit-btn')
+    document.getElementById('add-btn')
+    document.getElementById('gallery__image-btn')
+    document.querySelector('.popup').classList.add('popup__open')
+    }
+))*/
+
+
+// Закрытие Попап изменения профиля
+document.getElementById('modal-close-btn').addEventListener('click', function (ev) {
+    ev.preventDefault();
+    document.getElementById('modal-profile').classList.remove('popup__open')
+})
+
+// Кнопка сохранения информации профиля
+document.querySelector('.modal__save-btn').addEventListener("click", function (ev){
+    ev.preventDefault();
+    const name = document.getElementById('name');
+    name.textContent = document.getElementById('textarea-name').value;
+
+
+    const description = document.getElementById('description');
+    description.textContent = document.getElementById('textarea-description').value;
+
+    document.getElementById('modal-profile').classList.remove('popup__open')
+})
+
+// Открытие Попап добавления поста
+document.getElementById('add-btn').addEventListener('click', function (){
+    document.getElementById('modal-post').classList.add('popup__open')
+})
+
+// Закрытие Попап добавления поста
+document.getElementById('modal-close-btn-post').addEventListener('click', function (){
+    document.getElementById('modal-post').classList.remove('popup__open')
+})
 
 // Закрытие картинки поста
 document.getElementById('modal-close-btn-image').addEventListener('click', function () {
-    document.getElementById('modal-image').classList.remove('modal-image_active')
+    document.getElementById('modal-image').classList.remove('popup__open')
 });
 
 //Удаление карточки
-document.querySelectorAll('.gallery__delete-button').forEach(button => button.addEventListener('click', function (e) {
 
-    let deleteElement = e.target.parentElement
 
-    deleteElement.remove()
-}))
+
 
 
