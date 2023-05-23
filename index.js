@@ -94,16 +94,6 @@ document.getElementById('edit-btn').addEventListener('click', function () {
     document.getElementById('modal-profile').classList.add('popup__open')
 })
 
-// ОТКРЫТИЕ МОДАЛЬНОГО ОКНА НОВОЕ
-/*document.querySelectorAll('.popup').forEach(button => button.addEventListener('click', function () {
-    document.getElementById('edit-btn')
-    document.getElementById('add-btn')
-    document.getElementById('gallery__image-btn')
-    document.querySelector('.popup').classList.add('popup__open')
-    }
-))*/
-
-
 // Закрытие Попап изменения профиля
 document.getElementById('modal-close-btn').addEventListener('click', function (ev) {
     ev.preventDefault();
