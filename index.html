@@ -27,7 +27,7 @@
 
         <form id="modal-profile" class="popup popup__profile">
             <div class="modal__container">
-                <button id="modal-close-btn" class="modal__close"></button>
+                <button id="modal-close-btn" type="button" class="modal__close"></button>
                 <h2 class="modal__title">Редактировать профиль</h2>
                 <input id="textarea-name" placeholder="Имя профиля" class="modal__name">
                 <input id="textarea-description" placeholder="Описание" class="modal__description" >
@@ -37,9 +37,9 @@
             </div>
         </form>
 
-        <section id="modal-post" class="popup popup__post">
+        <form id="modal-post" class="popup popup__post">
             <div class="modal__container">
-                <button id="modal-close-btn-post" class="modal__close"></button>
+                <button id="modal-close-btn-post" type="button" class="modal__close"></button>
                 <h2 class="modal__title">Новое место</h2>
                 <input id="textarea-name-post" placeholder="Название" class="modal__name" >
                 <input id="textarea-src-post" placeholder="Ссылка на картинку" class="modal__description" >
@@ -47,7 +47,7 @@
                     <span class="modal__save-text">Создать</span>
                 </button>
             </div>
-        </section>
+        </form>
         <section class="gallery">
             <ul class="gallery__wrapper">
                 <template id="card-template">
