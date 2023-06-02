@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="src/pages/index.css">
     <title>mesto</title>
 </head>
 <body class="root">
@@ -25,29 +24,41 @@
             <button id="add-btn" class="profile__add-button"></button>
         </section>
 
-        <form id="modal-profile" class="popup popup__profile">
-            <div class="modal__container">
-                <button id="modal-close-btn" type="button" class="modal__close"></button>
-                <h2 class="modal__title">Редактировать профиль</h2>
-                <input id="textarea-name" placeholder="Имя профиля" class="modal__name">
-                <input id="textarea-description" placeholder="Описание" class="modal__description" >
-                <button id="modal-save-btn" type="submit" class="modal__save-btn">
-                    <span class="modal__save-text">Сохранить</span>
-                </button>
-            </div>
-        </form>
+        <section id="modal-profile" class="popup popup__profile">
+                <div class="modal__container">
+                    <button id="modal-close-btn" type="button" class="modal__close"></button>
+                    <h2 class="modal__title">Редактировать профиль</h2>
 
-        <form id="modal-post" class="popup popup__post">
+                    <form name="profileForm" class="form" novalidate>
+                    <input id="textareaName" placeholder="Имя профиля" class="form__input modal__name" type="text" name="nameProfile" required
+                           minlength='2' maxlength='25'>
+                    <span id="textareaName-error" class="form__input-error"></span>
+                    <input id="textareaDescription" placeholder="Описание" class="form__input modal__description" type="text" name="descriptionProfile" required
+                           minlength='2' maxlength='30'>
+                    <span id="textareaDescription-error" class="form__input-error modal-profile__input-error"></span>
+                    <button disabled id="modal-save-btn" type="submit" class="modal__save-btn modal__save-btn_disabled">Сохранить</button>
+                    </form>
+                </div>
+        </section>
+
+        <section id="modal-post" class="popup popup__post">
             <div class="modal__container">
                 <button id="modal-close-btn-post" type="button" class="modal__close"></button>
                 <h2 class="modal__title">Новое место</h2>
-                <input id="textarea-name-post" placeholder="Название" class="modal__name" >
-                <input id="textarea-src-post" placeholder="Ссылка на картинку" class="modal__description" >
-                <button id="modal-save-btn-post" type="submit" class="modal__save-btn">
-                    <span class="modal__save-text">Создать</span>
-                </button>
+                <form name="contentForm" class="form" novalidate>
+                    <input id="textareaNamePost" placeholder="Название" class="form__input modal__name" type="text" name="namePost" required minlength='2'>
+                    <span id="textareaNamePost-error" class="form__input-error"></span>
+
+                    <input id="textareaSrcPost" placeholder="Ссылка на картинку" class="form__input modal__description" type="url" required name="srcPost">
+                    <span id="textareaSrcPost-error" class="form__input-error"></span>
+                    <button disabled id="modal-save-btn-post" type="submit" class="modal__save-btn modal__save-btn_disabled">Создать
+                        <span class="modal__save-text"></span>
+                    </button>
+                </form>
             </div>
-        </form>
+        </section>
+
+
         <section class="gallery">
             <ul class="gallery__wrapper">
                 <template id="card-template">
@@ -78,7 +89,7 @@
         </footer>
     </main>
 
-<script src="index.js"></script>
+<script src="components/index.js"></script>
 
 </body>
 </html>

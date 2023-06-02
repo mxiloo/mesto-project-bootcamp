@@ -1,22 +1,29 @@
+import '../pages/index.css';
+
 // Переменные
-const modalPost = document.getElementById('modal-post');
-const modalImage = document.getElementById('modal-image');
-const textareaName = document.getElementById('textarea-name');
-const textareaDescription = document.getElementById('textarea-description');
-const modalProfile = document.getElementById('modal-profile');
-const description = document.getElementById('description');
-const name = document.getElementById('name');
-const modal__image = document.querySelector('.modal__image');
-const modal__text = document.querySelector('.modal__text');
-const editBtn = document.getElementById('edit-btn');
-const closeBtn =document.getElementById('modal-close-btn');
-const addBtn =document.getElementById('add-btn');
-const closeBtnPost =document.getElementById('modal-close-btn-post');
+import {modalPost, modalImage, textareaName, textareaDescription, modalProfile, description, name, modal__image, modal__text, editBtn, closeBtn, addBtn, closeBtnPost, popups, createText, createSrc, modalName, modalDescription} from "./consts"
+
+import {openPopupNew, closePopupNew} from "./modal"
+import {profileForm, contentForm, nameProfile, descriptionProfile, namePost, srcPost} from "./validate"
+import {setSubmitButtonStateProfile, setSubmitButtonStateContent, enableValidation} from "./validate";
+
+const validitySelector = {
+    formSelector: '.form',
+    inputSelector: '.form__input',
+}
+
+const handleSubmitForm = (e) => {
+    e.preventDefault();
+}
+
+document.forms.profileForm.addEventListener('submit', handleSubmitForm);
+document.forms.contentForm.addEventListener('submit', handleSubmitForm);
+
+enableValidation(validitySelector);
 
 
 function addNewCard (name, link) {
-    const galleryTemplate = document.querySelector('#card-template').content;
-    const galleryList = document.querySelector('.gallery__wrapper');
+    const galleryTemplate = document.getElementById('card-template').content;
 
 // дубликат узла
     const cardElement  = galleryTemplate.querySelector('.gallery__item').cloneNode(true);
@@ -28,7 +35,13 @@ function addNewCard (name, link) {
     cardElement.querySelector('.gallery__image').alt = name;
     cardElement.querySelector('.gallery__title').textContent = name;
 
-    galleryList.prepend(cardElement);
+    return cardElement;
+
+}
+
+const createCard = function (name, link) {
+    const galleryList = document.querySelector('.gallery__wrapper');
+    galleryList.prepend(addNewCard(name, link));
 }
 
 const initialCards = [
@@ -59,21 +72,22 @@ const initialCards = [
 ];
 
 for (let i = 0; i < initialCards.length; i++) {
-    addNewCard(initialCards[i].name, initialCards[i].link)
+    createCard(initialCards[i].name, initialCards[i].link)
 }
 
 // Добавление поста
-document.getElementById('modal-post').addEventListener('submit', (e) => {
+export const addPostBtn = contentForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const createText = document.getElementById('textarea-name-post').value;
-    const createSrc = document.getElementById('textarea-src-post').value;
+    namePost.value;
+    srcPost.value;
 
-    addNewCard(createText,createSrc)
+    createCard(namePost.value, srcPost.value);
 
-    modalPost.classList.remove('popup__open')
+    closePopupNew(modalPost)
 
-    document.getElementById('textarea-name-post').value = '';
-    document.getElementById('textarea-src-post').value = '';
+    contentForm.reset()
+    setSubmitButtonStateContent(false)
+
 })
 
 // Удаление карточки
@@ -89,9 +103,11 @@ function like () {
     this.classList.toggle('gallery__like-button_active')
 }
 
+
+
 // Открытие картинки поста
 function openImage (e) {
-    modalImage.classList.add('popup__open')
+    openPopupNew(modalImage)
 
     const image = e.target.src;
     const text = e.target.alt;
@@ -103,26 +119,26 @@ function openImage (e) {
 
 // Закрытие картинки поста
 document.getElementById('modal-close-btn-image').addEventListener('click', function () {
-    modalImage.classList.remove('popup__open')
+    closePopupNew(modalImage)
 });
 
 // Открытие Попап
-openPopup = () => {
+const openPopup = () => {
     editBtn.addEventListener('click', function () {
-        modalProfile.classList.add('popup__open')
+        openPopupNew(modalProfile)
     })
-    addBtn.addEventListener('click', function (){
-        modalPost.classList.add('popup__open')
+    addBtn.addEventListener('click', function () {
+        openPopupNew(modalPost)
     })
 }
 
 // Закрытие Попап
-closePopup = () => {
+const closePopup = () => {
     closeBtn.addEventListener('click', function () {
-        modalProfile.classList.remove('popup__open')
+        closePopupNew(modalProfile)
     })
-    closeBtnPost.addEventListener('click', function (){
-        modalPost.classList.remove('popup__open')
+    closeBtnPost.addEventListener('click', function () {
+        closePopupNew(modalPost)
     })
 }
 
@@ -130,20 +146,11 @@ openPopup();
 closePopup();
 
 // Кнопка сохранения информации профиля
-document.querySelector('.popup__profile').addEventListener("submit", function (ev){
+export const saveInfoBtn = profileForm.addEventListener("submit", function (ev) {
     ev.preventDefault();
-
-    name.textContent = textareaName.value;
-
-    description.textContent = textareaDescription.value;
-
-    modalProfile.classList.remove('popup__open');
-
-
-    document.getElementById('textarea-name').value = "";
-    document.getElementById('textarea-description').value = ""
+    name.textContent = nameProfile.value;
+    description.textContent = descriptionProfile.value;
+    closePopupNew(modalProfile)
+    profileForm.reset()
+    setSubmitButtonStateProfile(false)
 })
-
-
-
-

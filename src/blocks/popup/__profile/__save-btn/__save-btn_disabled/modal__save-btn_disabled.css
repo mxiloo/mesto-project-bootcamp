@@ -1,0 +1,4 @@
+.modal__save-btn_disabled {
+    background-color: #d9d9d9;
+    cursor: default;
+}

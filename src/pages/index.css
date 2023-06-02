@@ -18,6 +18,7 @@
 @import url(../blocks/profile/__name-container/profile__name-container.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
+
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__profile/popup__profile.css);
 @import url(../blocks/popup/__profile/__container/modal__container.css);
@@ -25,13 +26,15 @@
 @import url(../blocks/popup/__profile/__name/modal__name.css);
 @import url(../blocks/popup/__profile/__description/modal__description.css);
 @import url(../blocks/popup/__profile/__save-btn/modal__save-btn.css);
-@import url(../blocks/popup/__profile/__save-text/modal__save-text.css);
 @import url(../blocks/popup/__profile/__close/modal__close.css);
 @import url(../blocks/popup/__open/popup__open.css);
-
+@import url(../blocks/popup/__profile/__save-btn/__save-btn_disabled/modal__save-btn_disabled.css);
 @import url(../blocks/popup/__post/popup__post.css);
 @import url(../blocks/popup/__post/__description-post/modal__name-post.css);
 @import url(../blocks/popup/__post/__name-post/modal__description-post.css);
+@import url(../blocks/popup/__input-error/form__input-error.css);
+
+@import url(../blocks/form/form.css);
 
 @import url(../blocks/gallery/gallery.css);
 @import url(../blocks/gallery/__title/gallery__title.css);

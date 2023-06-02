@@ -5,10 +5,15 @@
     border-radius: 2px;
     padding: 0;
     /*margin: 48px 36px 37px 36px;*/
-    margin: auto;
+    margin: 28px auto auto auto;
     border: none;
     transition: opacity 0.3s ease-out;
     cursor: pointer;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .modal__save-btn:hover {
@@ -17,9 +22,9 @@
 
 @media screen and (max-width: 420px) {
     .modal__save-btn {
-        width: 238px;
         height: 46px;
-        margin-top: 45px;
+        width: 238px;
+        margin-top: 25px;
         margin-bottom: 25px;
     }
 }
