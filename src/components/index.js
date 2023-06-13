@@ -60,19 +60,21 @@ enableValidation(validitySelector);
 // Создание карточки
 function addNewCard (item, userId) {
     const galleryTemplate = document.getElementById('card-template').content;
-    const galleryLikeCounter = galleryTemplate.getElementById('likeCounter')
+
 
 // дубликат узла
     const cardElement = galleryTemplate
         .querySelector('.gallery__item')
         .cloneNode(true);
 
+    const galleryLikeCounter = cardElement.querySelector('.gallery__likeCounter')
+
     const cardElementImg = cardElement.querySelector('.gallery__image');
+
 
     let cardLikes = item.likes
 
     const galleryDeleteButton = cardElement.querySelector('.gallery__delete-button');
-    galleryDeleteButton.addEventListener('click', deleteCard);
 
     const galleryImageButton = cardElement.querySelector('.gallery__image-button')
     galleryImageButton.addEventListener('click', openImage);
@@ -129,9 +131,11 @@ Promise.all([getProfileInfo(), getItems()])
         description.textContent = userData.about;
         avatar.src = userData.avatar;
 
-        for (let i = 0; i < allCards.length; i++) {
-            createCard(allCards[i])
-        }
+        allCards.reverse().forEach(item => {
+            createCard(item)
+        })
+
+
     })
     .catch(err => {
         console.log(err)
@@ -139,7 +143,7 @@ Promise.all([getProfileInfo(), getItems()])
 
 
 const createCard = function (item) {
-    galleryList.append(addNewCard(item, userId));
+    galleryList.prepend(addNewCard(item, userId));
 }
 
 // Добавление поста
@@ -170,18 +174,16 @@ profileForm.addEventListener("submit", function (ev) {
         .then(res => {
             name.textContent = res.name;
             description.textContent = res.about;
+            closePopup(modalProfile)
+            profileForm.reset()
+            setSubmitButtonStateProfile(false)
         })
         .catch(err => {
             console.log(err);
         })
         .finally(() => {
             saveBtn.textContent = 'Сохранить';
-            ev.target.reset();
         })
-
-    closePopup(modalProfile)
-    profileForm.reset()
-    setSubmitButtonStateProfile(false)
 })
 
 // Изменение аватара
@@ -191,17 +193,16 @@ avatarForm.addEventListener('submit', function (e) {
     setAvatar(srcAvatar.value)
         .then(res => {
             avatar.src = res.avatar
+            avatarForm.reset()
+            closePopup(modalAvatar)
+            setSubmitButtonStateAvatar(false)
         })
         .catch(err => {
             console.log(err)
         })
         .finally(() => {
             saveBtnAvatar.textContent = 'Сохранить';
-            e.target.reset()
         })
-    avatarForm.reset()
-    closePopup(modalAvatar)
-    setSubmitButtonStateAvatar(false)
 })
 
 // Удаление карточки
@@ -230,6 +231,8 @@ document.getElementById('modal-close-btn-image').addEventListener('click', funct
 // Открытие Попап
 editBtn.addEventListener('click', function () {
     openPopup(modalProfile)
+    nameProfile.textContent = name.textContent
+    descriptionProfile.textContent = description.textContent
 })
 addBtnProfile.addEventListener('click', function () {
     openPopup(modalPost)

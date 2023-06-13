@@ -1,4 +1,3 @@
-/*
 .profile__editCover {
     background-image: url("../../../images/AvatarEdit.svg");
     background-repeat: no-repeat;
@@ -11,6 +10,3 @@
     opacity: 0;
 }
 
-.profile__editCover:hover {
-    opacity: 1;
-}*/

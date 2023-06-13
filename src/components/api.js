@@ -54,7 +54,7 @@ export const getItems = () => {
 }
 
 // Отправляем карточку на сервер
-export const setItem = () => {
+export const setItem = (name, link) => {
     return fetch('https://nomoreparties.co/v1/wbf-cohort-9/cards', {
         headers: {
             authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
@@ -62,8 +62,8 @@ export const setItem = () => {
         },
         method: 'POST',
         body: JSON.stringify({
-            name: namePost.value,
-            link: srcPost.value
+            name: name,
+            link: link
         })
     })
         .then(responseStatus)
@@ -109,7 +109,7 @@ export const delLike = (item) => {
 }
 
 // Аватар
-export const setAvatar = () => {
+export const setAvatar = (avatar) => {
     return fetch('https://nomoreparties.co/v1/wbf-cohort-9/users/me/avatar', {
         headers: {
             authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
@@ -117,7 +117,7 @@ export const setAvatar = () => {
         },
         method: 'PATCH',
         body: JSON.stringify({
-            avatar: srcAvatar.value
+            avatar: avatar
         })
     })
         .then(responseStatus)
