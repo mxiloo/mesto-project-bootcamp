@@ -12,16 +12,32 @@
     <main class="main main__size">
 
         <section class="profile">
-            <div class="profile__avatar"></div>
+            <div class="profile__avatarContainer">
+                <button id ='editAvatarButton' class="profile__changeAvatarBtn"></button>
+                <div class="profile__editCover"></div>
+                <img id="avatar" class="profile__avatar" src="#"></img>
+            </div>
                 <div class="profile__info">
                     <div class="profile__name-container">
-                        <h1 id="name" class="profile__name">Жак-Ив Кусто</h1>
+                        <h1 id="name" class="profile__name"></h1>
                         <button id="edit-btn" type="button"  class="profile__edit-button" title="Редактировать профиль"></button>
                     </div>
 
-                    <h2 id="description" class="profile__description">Исследователь океана</h2>
+                    <h2 id="description" class="profile__description"></h2>
                 </div>
             <button id="add-btn" class="profile__add-button"></button>
+        </section>
+
+        <section id="modalAvatar" class="popup popup__avatar">
+            <div class="modal__container">
+                <button id="modal-close-btn-avatar" type="button" class="modal__close"></button>
+                <h2 class="modal__title">Обновить аватар</h2>
+                <form name="avatarForm" class="form" novalidate>
+                    <input id="avatarArea" placeholder="Ссылка на картинку" class="form__input modal__description" type="url" required name="srcAvatar">
+                    <span id="avatarArea-error" class="form__input-error"></span>
+                    <button disabled id="modal-save-btn-avatar" type="submit" class="modal__save-btn modal__save-btn_disabled">Сохранить</button>
+                </form>
+            </div>
         </section>
 
         <section id="modal-profile" class="popup popup__profile">
@@ -51,9 +67,7 @@
 
                     <input id="textareaSrcPost" placeholder="Ссылка на картинку" class="form__input modal__description" type="url" required name="srcPost">
                     <span id="textareaSrcPost-error" class="form__input-error"></span>
-                    <button disabled id="modal-save-btn-post" type="submit" class="modal__save-btn modal__save-btn_disabled">Создать
-                        <span class="modal__save-text"></span>
-                    </button>
+                    <button disabled id="modal-save-btn-post" type="submit" class="modal__save-btn modal__save-btn_disabled">Создать</button>
                 </form>
             </div>
         </section>
@@ -69,7 +83,10 @@
                         </button>
                         <div class="gallery__container">
                             <h2 class="gallery__title"></h2>
-                            <button type="submit" id="like-btn" class="gallery__like-button"></button>
+                            <div class="gallery__likeContainer">
+                                <button type="submit" id="like-btn" class="gallery__like-button"></button>
+                                <span id="likeCounter" class="gallery__likeCounter">0</span>
+                            </div>
                         </div>
                     </li>
                 </template>
@@ -87,9 +104,8 @@
         <footer class="footer">
             <p class="footer__text">&copy; 2020 Mesto Russia</p>
         </footer>
+
+
     </main>
-
-<script src="components/index.js"></script>
-
 </body>
 </html>

@@ -1,0 +1,5 @@
+.gallery__likeContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto 20px auto 0;
+}

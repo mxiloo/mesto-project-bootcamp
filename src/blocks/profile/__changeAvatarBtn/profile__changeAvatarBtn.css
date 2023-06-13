@@ -1,0 +1,27 @@
+.profile__changeAvatarBtn {
+    background-image: url("../../../images/AvatarEdit.svg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    min-width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    transition: opacity .3s ease-out;
+}
+
+.profile__changeAvatarBtn:hover:after {
+    background-image: url("../../../images/AvatarEdit.svg");
+    background-repeat: no-repeat;
+    content: '';
+    min-width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}

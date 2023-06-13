@@ -1,4 +1,4 @@
-import {saveBtn, addBtnContent} from './consts';
+import {saveBtn, addBtnContent, saveBtnAvatar} from './consts';
 
 
 export const profileForm = document.forms.profileForm;
@@ -7,6 +7,8 @@ export const descriptionProfile = profileForm.elements.descriptionProfile;
 export const contentForm = document.forms.contentForm;
 export const namePost = contentForm.elements.namePost;
 export const srcPost = contentForm.elements.srcPost;
+export const avatarForm = document.forms.avatarForm;
+export const srcAvatar = avatarForm.elements.srcAvatar;
 
 // Ошибки
 const showError = (input, form, errorMessage) => {
@@ -72,6 +74,21 @@ export function setSubmitButtonStateContent (isFormValid) {
 contentForm.addEventListener('input', (e) => {
         const isValidContent = namePost.value.length >= 2 && srcPost.validity.valid;
         setSubmitButtonStateContent(isValidContent)
+})
+
+export function setSubmitButtonStateAvatar (isFormValid) {
+    if (isFormValid) {
+        saveBtnAvatar.removeAttribute('disabled');
+        saveBtnAvatar.classList.remove('modal__save-btn_disabled');
+    } else {
+        saveBtnAvatar.setAttribute('disabled', true);
+        saveBtnAvatar.classList.add('modal__save-btn_disabled');
+    }
+}
+
+avatarForm.addEventListener('input', (e) => {
+    const isValidAvatar = srcAvatar.validity.valid;
+    setSubmitButtonStateAvatar(isValidAvatar)
 })
 
 

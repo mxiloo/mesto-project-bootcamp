@@ -1,0 +1,9 @@
+.profile__avatarContainer {
+    position: relative;
+    padding: 0;
+    border: none;
+    min-width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+

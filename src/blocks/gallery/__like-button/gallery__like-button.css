@@ -6,9 +6,9 @@
     border: none;
     width: 22px;
     height: 19px;
-    margin: auto 20px auto 0;
     padding: 0;
     transition: opacity 0.3s ease-out;
+    align-self: center;
 }
 
 .gallery__like-button:hover {
