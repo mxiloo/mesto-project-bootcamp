@@ -60,6 +60,4 @@ export const setSubmitButtonState = (button, input, settings) => {
         button.setAttribute('disabled', true);
         button.classList.add(settings.inactiveButtonSelector);
     }
-
-    console.log(settings.inactiveButtonSelector)
 }

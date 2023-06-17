@@ -45,7 +45,7 @@ export const validitySelector = {
     formSelector: '.form',
     inputSelector: '.form__input',
     submitButtonSelector: '.modal__save-btn',
-    inactiveButtonSelector: '.modal__save-btn_disabled',
+    inactiveButtonSelector: 'modal__save-btn_disabled',
     inputErrorClass: '.form__input-error',
 }
 
@@ -169,8 +169,8 @@ contentForm.addEventListener('submit', function (e) {
 })
 
 // Сохранение информации профиля
-profileForm.addEventListener("submit", function (ev) {
-    ev.preventDefault();
+profileForm.addEventListener("submit", function (e) {
+    e.preventDefault();
     e.submitter.textContent = 'Сохранение...'
     setProfileInfo(nameProfile.value, descriptionProfile.value)
         .then(res => {
