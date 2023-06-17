@@ -1,6 +1,3 @@
-import {saveBtn, addBtnContent, saveBtnAvatar} from './consts';
-
-
 export const profileForm = document.forms.profileForm;
 export const nameProfile = profileForm.elements.nameProfile;
 export const descriptionProfile = profileForm.elements.descriptionProfile;
@@ -33,9 +30,18 @@ const checkValid = (input, form) => {
 
 const setEventListeners = (form, settings) => {
     const inputList = form.querySelectorAll(settings.inputSelector);
+    const button = form.querySelector(settings.submitButtonSelector)
     inputList.forEach(input => {
-        input.addEventListener('input', () => checkValid(input, form))
+        input.addEventListener('input', () => {
+            checkValid(input, form)
+            setSubmitButtonState(button, input, settings)
+        })
     })
+}
+
+export const disableButton = (button) => {
+    button.setAttribute('disabled', true);
+    button.classList.add('modal__save-btn_disabled');
 }
 
 export const enableValidation = (settings) => {
@@ -46,50 +52,14 @@ export const enableValidation = (settings) => {
 }
 
 // Состояние кнопки
-export function setSubmitButtonStateProfile (isFormValid) {
-    if (isFormValid) {
-        saveBtn.removeAttribute('disabled');
-        saveBtn.classList.remove('modal__save-btn_disabled');
+export const setSubmitButtonState = (button, input, settings) => {
+    if (input.validity.valid) {
+        button.removeAttribute('disabled');
+        button.classList.remove(settings.inactiveButtonSelector);
     } else {
-        saveBtn.setAttribute('disabled', true);
-        saveBtn.classList.add('modal__save-btn_disabled');
+        button.setAttribute('disabled', true);
+        button.classList.add(settings.inactiveButtonSelector);
     }
+
+    console.log(settings.inactiveButtonSelector)
 }
-
-profileForm.addEventListener('input', (e) => {
-    const isValidProfile = nameProfile.value.length >= 2 && descriptionProfile.value.length >= 2;
-    setSubmitButtonStateProfile(isValidProfile)
-})
-
-export function setSubmitButtonStateContent (isFormValid) {
-    if (isFormValid) {
-        addBtnContent.removeAttribute('disabled');
-        addBtnContent.classList.remove('modal__save-btn_disabled');
-    } else {
-        addBtnContent.setAttribute('disabled', true);
-        addBtnContent.classList.add('modal__save-btn_disabled');
-    }
-}
-
-contentForm.addEventListener('input', (e) => {
-        const isValidContent = namePost.value.length >= 2 && srcPost.validity.valid;
-        setSubmitButtonStateContent(isValidContent)
-})
-
-export function setSubmitButtonStateAvatar (isFormValid) {
-    if (isFormValid) {
-        saveBtnAvatar.removeAttribute('disabled');
-        saveBtnAvatar.classList.remove('modal__save-btn_disabled');
-    } else {
-        saveBtnAvatar.setAttribute('disabled', true);
-        saveBtnAvatar.classList.add('modal__save-btn_disabled');
-    }
-}
-
-avatarForm.addEventListener('input', (e) => {
-    const isValidAvatar = srcAvatar.validity.valid;
-    setSubmitButtonStateAvatar(isValidAvatar)
-})
-
-
-

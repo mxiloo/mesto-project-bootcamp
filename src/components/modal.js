@@ -14,7 +14,6 @@ const closeByEscape = (e) => {
     if (e.key === 'Escape') {
         const popupOpen = document.querySelector('.popup__open');
         closePopup(popupOpen);
-        document.removeEventListener('keydown', closeByEscape);
     };
 };
 
@@ -22,7 +21,8 @@ const closeByEscape = (e) => {
 popupList.forEach((popup) => {
     popup.addEventListener('mousedown', (e) => {
         if (e.target.classList.contains('popup__open')) {
-            popup.classList.toggle('popup__open');
+            const popupOpen = document.querySelector('.popup__open');
+            closePopup(popupOpen);
         }
     });
 });

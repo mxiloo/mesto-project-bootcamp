@@ -23,5 +23,6 @@ export const createSrc = document.getElementById('textareaSrcPost');
 export const modalName = document.querySelector('.modal__name');
 export const modalDescription = document.querySelector('.modal__description');
 export const galleryList = document.querySelector('.gallery__wrapper');
+export const submitButton = document.querySelector('.modal__save-btn')
 
 

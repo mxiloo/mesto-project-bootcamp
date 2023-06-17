@@ -35,17 +35,18 @@ import {
     avatarForm,
     srcAvatar
 } from "./validate"; // Переменные
-import {setSubmitButtonStateProfile, setSubmitButtonStateContent, setSubmitButtonStateAvatar, enableValidation} from "./validate"; // Функции
+import {enableValidation, disableButton} from "./validate"; // Функции
 import {deleteItem, delLike, getItems, getProfileInfo, setAvatar, setItem, setLike, setProfileInfo} from "./api";
 import {all} from "core-js/internals/document-all";
 
-
 export let userId;
 
-
-const validitySelector = {
+export const validitySelector = {
     formSelector: '.form',
     inputSelector: '.form__input',
+    submitButtonSelector: '.modal__save-btn',
+    inactiveButtonSelector: '.modal__save-btn_disabled',
+    inputErrorClass: '.form__input-error',
 }
 
 const handleSubmitForm = (e) => {
@@ -149,59 +150,60 @@ const createCard = function (item) {
 // Добавление поста
 contentForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    addBtnContent.textContent = 'Создание...';
+    e.submitter.textContent = 'Создание...';
     setItem(namePost.value, srcPost.value)
         .then(res => {
             createCard(res);
+            contentForm.reset()
+            closePopup(modalPost)
+            disableButton(e.submitter)
         })
         .catch(err => {
             console.log(err)
         })
         .finally(() => {
-            addBtnContent.textContent = 'Создать'
+            e.submitter.textContent = 'Создать'
             e.target.reset();
         })
-    contentForm.reset()
-    closePopup(modalPost)
-    setSubmitButtonStateContent(false)
+
 })
 
 // Сохранение информации профиля
 profileForm.addEventListener("submit", function (ev) {
     ev.preventDefault();
-    saveBtn.textContent = 'Сохранение...'
+    e.submitter.textContent = 'Сохранение...'
     setProfileInfo(nameProfile.value, descriptionProfile.value)
         .then(res => {
             name.textContent = res.name;
             description.textContent = res.about;
             closePopup(modalProfile)
             profileForm.reset()
-            setSubmitButtonStateProfile(false)
+            disableButton(e.submitter)
         })
         .catch(err => {
             console.log(err);
         })
         .finally(() => {
-            saveBtn.textContent = 'Сохранить';
+            e.submitter.textContent = 'Сохранить';
         })
 })
 
 // Изменение аватара
 avatarForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    saveBtnAvatar.textContent = 'Сохранение...';
+    e.submitter.textContent = 'Сохранение...';
     setAvatar(srcAvatar.value)
         .then(res => {
             avatar.src = res.avatar
             avatarForm.reset()
             closePopup(modalAvatar)
-            setSubmitButtonStateAvatar(false)
+            disableButton(e.submitter)
         })
         .catch(err => {
             console.log(err)
         })
         .finally(() => {
-            saveBtnAvatar.textContent = 'Сохранить';
+            e.submitter.textContent = 'Сохранить';
         })
 })
 
@@ -231,8 +233,8 @@ document.getElementById('modal-close-btn-image').addEventListener('click', funct
 // Открытие Попап
 editBtn.addEventListener('click', function () {
     openPopup(modalProfile)
-    nameProfile.textContent = name.textContent
-    descriptionProfile.textContent = description.textContent
+    nameProfile.value = name.textContent
+    descriptionProfile.value = description.textContent
 })
 addBtnProfile.addEventListener('click', function () {
     openPopup(modalPost)

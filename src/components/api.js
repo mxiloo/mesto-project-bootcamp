@@ -28,11 +28,9 @@ export const getProfileInfo = () => {
 
 // Изменяем инфу пользователя и отсылаем на сервер
 export const setProfileInfo = () => {
-    return fetch('https://nomoreparties.co/v1/wbf-cohort-9/users/me', {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        },
+    return fetch(`${config.baseUrl}/users/me`, {
+        headers: config.headers,
+
         method: 'PATCH',
         body: JSON.stringify({
             name: nameProfile.value,
@@ -44,22 +42,16 @@ export const setProfileInfo = () => {
 
 // Получение карточек с сервера
 export const getItems = () => {
-    return fetch('https://nomoreparties.co/v1/wbf-cohort-9/cards', {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        }
+    return fetch(`${config.baseUrl}/cards`, {
+        headers: config.headers
     })
         .then(responseStatus)
 }
 
 // Отправляем карточку на сервер
 export const setItem = (name, link) => {
-    return fetch('https://nomoreparties.co/v1/wbf-cohort-9/cards', {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        },
+    return fetch(`${config.baseUrl}/cards`, {
+        headers: config.headers,
         method: 'POST',
         body: JSON.stringify({
             name: name,
@@ -71,11 +63,8 @@ export const setItem = (name, link) => {
 
 // Удаление карточки
 export const deleteItem = (cardId) => {
-    return fetch(`https://nomoreparties.co/v1/wbf-cohort-9/cards/${cardId}`, {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        },
+    return fetch(`${config.baseUrl}/cards/${cardId}`, {
+        headers: config.headers,
         method: 'DELETE',
         body: JSON.stringify({})
     })
@@ -84,11 +73,8 @@ export const deleteItem = (cardId) => {
 
 // Установка Лайка
 export const setLike = (item) => {
-    return fetch(`https://nomoreparties.co/v1/wbf-cohort-9/cards/likes/${item._id}`, {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        },
+    return fetch(`${config.baseUrl}/cards/likes/${item._id}`, {
+        headers: config.headers,
         method: 'PUT',
         body: JSON.stringify({})
     })
@@ -97,11 +83,8 @@ export const setLike = (item) => {
 
 // Снятие Лайка
 export const delLike = (item) => {
-    return fetch(`https://nomoreparties.co/v1/wbf-cohort-9/cards/likes/${item._id}`, {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        },
+    return fetch(`${config.baseUrl}/cards/likes/${item._id}`, {
+        headers: config.headers,
         method: 'DELETE',
         body: JSON.stringify({})
     })
@@ -110,11 +93,8 @@ export const delLike = (item) => {
 
 // Аватар
 export const setAvatar = (avatar) => {
-    return fetch('https://nomoreparties.co/v1/wbf-cohort-9/users/me/avatar', {
-        headers: {
-            authorization: '2cdae549-d4cc-4251-8eef-46d5577a6d11',
-            'Content-Type': 'application/json'
-        },
+    return fetch(`${config.baseUrl}/users/me/avatar`, {
+        headers: config.headers,
         method: 'PATCH',
         body: JSON.stringify({
             avatar: avatar
